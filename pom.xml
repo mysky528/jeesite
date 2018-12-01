@@ -39,7 +39,7 @@
 		<xstream.version>1.4.7</xstream.version>
 		<guava.version>17.0</guava.version>
 		<dozer.version>5.5.1</dozer.version>
-		<poi.version>3.9</poi.version>
+		<poi.version>3.17</poi.version>
 		<freemarker.version>2.3.20</freemarker.version>
 		
 		<!-- jdbc driver setting -->
@@ -514,7 +514,7 @@
 		<dependency>
 			<groupId>com.drewnoakes</groupId>
 			<artifactId>metadata-extractor</artifactId>
-			<version>2.6.2</version>
+			<version>2.10.0</version>
 		</dependency>
 		
 		<!-- 条形码、二维码生成  -->
@@ -920,7 +920,7 @@
 							<target>
 								
 								<!-- mysql -->
-								<property name="dbunit.datatype" value="org.dbunit.ext.mysql.MySqlDataTypeFactory" />
+								<property name="dbunit.datatype" value="org.dbunit.ext.mysql.MySqlDataTypeFactory"/>
 								
 								<!-- mssql
 								<property name="dbunit.datatype" value="org.dbunit.ext.mssql.MsSqlDataTypeFactory" /> -->
@@ -928,10 +928,9 @@
 								<!-- oracle
 								<property name="dbunit.datatype" value="org.dbunit.ext.oracle.Oracle10DataTypeFactory" /> -->
 								
-								<property file="src/main/resources/jeesite.properties" />
-								<sql driver="${jdbc.driver}" url="${jdbc.url}" userid="${jdbc.username}" password="${jdbc.password}" 
-									onerror="continue" encoding="${project.build.sourceEncoding}">
-									<classpath refid="maven.test.classpath" />
+								<property file="src/main/resources/jeesite.properties"/>
+								<sql driver="${jdbc.driver}" url="${jdbc.url}" userid="${jdbc.username}" password="${jdbc.password}" onerror="continue" encoding="${project.build.sourceEncoding}">
+									<classpath refid="maven.test.classpath"/>
 									<transaction src="db/sys/jeesite_${jdbc.type}.sql"/>
 									<transaction src="db/cms/jeesite_${jdbc.type}.sql"/>
 									<transaction src="db/oa/jeesite_${jdbc.type}.sql"/>
@@ -946,20 +945,19 @@
 									<transaction src="db/act/create/activiti.${jdbc.type}.create.identity.sql"/>
 								</sql>
 								
-								<taskdef name="dbunit" classname="org.dbunit.ant.DbUnitTask" classpathref="maven.test.classpath" />
+								<taskdef name="dbunit" classname="org.dbunit.ant.DbUnitTask" classpathref="maven.test.classpath"/>
 								
 								<!-- mysql、mssql -->
-								<dbunit driver="${jdbc.driver}" url="${jdbc.url}" userid="${jdbc.username}"
-									 password="${jdbc.password}">
+								<dbunit driver="${jdbc.driver}" url="${jdbc.url}" userid="${jdbc.username}" password="${jdbc.password}">
 								
 								<!-- oracle
 								<dbunit driver="${jdbc.driver}" url="${jdbc.url}" userid="${jdbc.username}"
 									password="${jdbc.password}" schema="${jdbc.username}" > -->
 									
 									<dbconfig>
-										<property name="datatypeFactory" value="${dbunit.datatype}" />
+										<property name="datatypeFactory" value="${dbunit.datatype}"/>
 									</dbconfig>
-									<classpath refid="maven.test.classpath" />
+									<classpath refid="maven.test.classpath"/>
 									<operation type="INSERT" src="db/sys/jeesite_data.xls" format="xls" transaction="true"/>
 									<operation type="INSERT" src="db/cms/jeesite_data.xls" format="xls" transaction="true"/>
 									
